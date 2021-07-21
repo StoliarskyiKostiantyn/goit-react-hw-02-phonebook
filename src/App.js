@@ -14,8 +14,6 @@ class App extends Component {
     filter:''
     }
   forSubmiHandler = data => {
-
-    console.log(data);
     this.setState(prevState => ({
       contacts: [...this.state.contacts,data],
     }))
@@ -28,6 +26,9 @@ class App extends Component {
     const normalizaedFilter = filter.toLowerCase();
     return contacts.filter(contact => contact.name.toLowerCase().includes(normalizaedFilter));
   }
+  onDeleteContact = id => {
+  this.setState(prevState=>({contacts: prevState.contacts.filter(contact=>contact.id !==id)}))
+  }
   
 
   render() {
@@ -39,7 +40,7 @@ class App extends Component {
         <Phonebook onSubmit={this.forSubmiHandler}></Phonebook>
         <Filter value={this.state.filter} onChange={this.onFilterChange} />
            <h2>Contacts</h2>
-        <ContactList contactitems={visibleContact}></ContactList>
+        <ContactList contactitems={visibleContact} onDeleteContact={this.onDeleteContact}></ContactList>
       </>)
   }
 }

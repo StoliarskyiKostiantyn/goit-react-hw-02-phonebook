@@ -1,18 +1,16 @@
-import shortid from "shortid";
 import React, { Component } from "react";
 class ContactList extends Component{
-    state = {
-      contactitems:[],
-    }
-    contactId = shortid.generate();
+    
     render() {
         return (
         <>
             <div>
                 <ul>
-                     {this.props.contactitems.map(contactitem => (
-        <li key={this.contactId}>
-           <span> Name:{contactitem.name} Phone:{contactitem.phone}</span>
+        {this.props.contactitems.map(contactitem => (
+        <li id={contactitem.id}>
+        <span> Name:{contactitem.name} Phone:{contactitem.phone}</span><button
+        type="button"
+        onClick={() => this.props.onDeleteContact(contactitem.id)}>Удалить</button>
         </li>
       ))}
                 </ul>
