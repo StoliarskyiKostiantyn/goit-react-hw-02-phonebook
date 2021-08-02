@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 class ContactList extends Component {
   render() {
     return (
@@ -6,9 +7,8 @@ class ContactList extends Component {
         <div>
           <ul>
             {this.props.contactitems.map((contactitem) => (
-              <li id={contactitem.id}>
+              <li key={contactitem.id}>
                 <span>
-                  {" "}
                   Name:{contactitem.name} Phone:{contactitem.phone}
                 </span>
                 <button
@@ -25,4 +25,10 @@ class ContactList extends Component {
     );
   }
 }
+ContactList.propTypes = {
+  contactitems: PropTypes.shape({
+    name: PropTypes.string,
+    phone: PropTypes.string,
+  }),
+};
 export default ContactList;

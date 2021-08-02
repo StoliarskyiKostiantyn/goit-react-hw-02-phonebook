@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 class Phonebook extends Component {
   state = {
     name: "",
@@ -47,4 +48,7 @@ class Phonebook extends Component {
     );
   }
 }
+Phonebook.propTypes = {
+  onSubmit: PropTypes.func,
+};
 export default Phonebook;

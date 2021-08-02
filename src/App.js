@@ -3,6 +3,7 @@ import Phonebook from "./Components/Phonebook";
 import React, { Component } from "react";
 import ContactList from "./Components/ContactList";
 import Filter from "./Components/Filter";
+import shortid from "shortid";
 class App extends Component {
   state = {
     contacts: [
@@ -14,8 +15,12 @@ class App extends Component {
     filter: "",
   };
   forSubmiHandler = (data) => {
+    const item = {
+      id: shortid.generate(),
+      ...data,
+    };
     this.setState((prevState) => ({
-      contacts: [...this.state.contacts, data],
+      contacts: [...prevState.contacts, item],
     }));
   };
   onFilterChange = (e) => {

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 function Filter({ value, onChange }) {
   return (
     <label>
@@ -6,4 +7,8 @@ function Filter({ value, onChange }) {
     </label>
   );
 }
+Filter.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};
 export default Filter;
